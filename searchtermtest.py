@@ -9,7 +9,7 @@ from googleads import adwords
 
 
 # Specify where to download the file here.
-PATH = '/Users/april.liu/Documents/Search Term Report/keyword_api_test.csv'
+PATH = INSERT PATH
 
 
 def main(client, path):
@@ -20,8 +20,8 @@ def main(client, path):
   report_query = ('''SELECT CampaignName, AdGroupName,  Criteria, KeywordMatchType, 
                   Impressions, Clicks, Cost 
                   FROM KEYWORDS_PERFORMANCE_REPORT 
-                  WHERE Status IN [ENABLED, PAUSED] and CampaignId = 431091500
-                  DURING 20160101, 20160628''')
+                  WHERE Status IN [ENABLED, PAUSED] and CampaignId = INSERT CAMPAIGN ID
+                  DURING INSERT START DATE, INSERT END DATE''')
 
   with open(path, 'w') as output_file:
     report_downloader.DownloadReportWithAwql(
@@ -103,7 +103,7 @@ from openpyxl import load_workbook
 
 # In[3]:
 
-engine_RS = create_engine('postgresql://april.liu:VVUamGKs71@10.0.7.23:5439/rmus_prod') 
+engine_RS = create_engine('postgresql://USERNAME:PASSWORD@10.0.7.23:5439/rmus_prod') 
 
 
 # In[4]:
