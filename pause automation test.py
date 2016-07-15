@@ -82,7 +82,7 @@ import re
 iszip = re.compile('[0-9]')
 
 import pandas as pd
-df = pd.read_csv('/Users/april.liu/Documents/Expansion New Market/pause automation/test version_7.13.16.csv', header=1, skiprows=0)
+df = pd.read_csv('PATH', header=1, skiprows=0)
 df = df[[u'State',u'Ad group', u'Ad group ID']]
 ad_group_name = df[u'Ad group']
 
@@ -135,10 +135,10 @@ df = df[:-2]
 
 # check active_listings 
 
-engine_RS = create_engine('postgresql://april.liu:VVUamGKs71@10.0.7.23:5439/rmus_prod') 
+engine_RS = create_engine('postgresql://USERNAME:PASSWORD@10.0.7.23:5439/rmus_prod') 
 
 # Create Cursor and Connection to Redshift for Update
-REDSHIFT_CONNECTION_STRING = 'dbname=rmus_prod user=april.liu password=VVUamGKs71 host=10.0.7.23 port=5439 sslmode=require'
+REDSHIFT_CONNECTION_STRING = 'dbname=rmus_prod user=USERNAME password=PASSWORD host=10.0.7.23 port=5439 sslmode=require'
 redshift_conn = psycopg2.connect(REDSHIFT_CONNECTION_STRING)
 redshift_conn.set_session(autocommit=True)
 redshift_cursor = redshift_conn.cursor()
@@ -299,7 +299,7 @@ df['active_listings'][(df['property_type'] == 'condo') & (df['classtype'] == 'zi
 
 
 
-df.to_csv('/Users/april.liu/Documents/Expansion New Market/pause automation/test version 2_7.13.16.csv', index=False)
+df.to_csv('PATH', index=False)
 
 
 
