@@ -17,10 +17,10 @@ reference_table.columns = ['Campaign','market','vendor_campaign_id']
 
 
 # Create Connection Engines to Stingray and Redshift 
-engine_RS = create_engine('postgresql://april.liu:VVUamGKs71@10.0.7.23:5439/rmus_prod') 
+engine_RS = create_engine('postgresql://USERNAME:PASSWORD@10.0.7.23:5439/rmus_prod') 
 
 # Create Cursor and Connection to Redshift for Update
-REDSHIFT_CONNECTION_STRING = 'dbname=rmus_prod user=april.liu password=VVUamGKs71 host=10.0.7.23 port=5439 sslmode=require'
+REDSHIFT_CONNECTION_STRING = 'dbname=rmus_prod user=USERNAME password=PASSWORD host=10.0.7.23 port=5439 sslmode=require'
 redshift_conn = psycopg2.connect(REDSHIFT_CONNECTION_STRING)
 redshift_conn.set_session(autocommit=True)
 redshift_cursor = redshift_conn.cursor()
