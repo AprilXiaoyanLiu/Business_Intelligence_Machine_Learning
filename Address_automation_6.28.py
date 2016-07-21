@@ -62,7 +62,7 @@ first_value(ad_group_status)
 over (partition by property_id order by listing_date desc
 rows between unbounded preceding and unbounded following) as "Ad Group Status", ' '||'+'||street_number ||' '||'+'||replace(street_name,' ',' +') as Keyword, 'broad' as "Match Type", '2' as "Max CPC", business_market_name as "Market"
 from rf_temp.sem_address_listings_new
-where trunc(update_date) = current_date and ad_group_status = 'active'
+where trunc(insert_date) = current_date and ad_group_status = 'active'
 ''' 
 
 AdCopy_Query = '''select distinct property_id as "Ad Group", 
@@ -73,7 +73,7 @@ rows between unbounded preceding and unbounded following) as "Ad Group Status", 
 'Redfin.com' as "Display URL", 'https://www.redfin.com/'||state_code||'/'||replace(replace(city, ' ','-'),'.','')||'/home/'||property_id as "Final URL",
 'Text Ad' as "Ad Type", business_market_name as "Market"
 from rf_temp.sem_address_listings_new
-where trunc(update_date) = current_date and ad_group_status = 'active'
+where trunc(insert_date) = current_date and ad_group_status = 'active'
  '''
 
 
